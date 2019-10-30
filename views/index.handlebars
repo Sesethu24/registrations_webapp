@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="/public/css/registration_number.css">
+
+  <title>registrations</title>
+
+</head>
+
+<body>
+  <form action="/reg_numbers" method="POST">
+    <div class="row">
+      <div class="col-12">
+        <div class="regNumbers ">
+          <span>
+            <h1 style="padding-left: 30%" class="center">Registration Numbers </h1>
+
+            <div class="row">
+              <div style="padding-left: 20%;padding-top:2%" class="col-6">
+                <div class="input-group flex-nowrap">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="addon-wrapping">@</span>
+                  </div>
+                  <input type="text" class="form-control" placeholder="reg-number" aria-label="Username"
+                    aria-describedby="basic-addon1" name="plate" value=""
+                    onkeyup=" this.value=this.value.toUpperCase();">
+                </div>
+              </div>
+            </div>
+          </span>
+
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div style="padding-left:30%;padding-top:2%" class="col-12">
+        <button type="submit" class="btn btn-outline-success">add</button>
+
+      </div>
+    </div>
+    <div class="error">
+
+    </div>
+
+    <br>
+    <div style="padding-left:20%;padding-top:2%" class="row">
+      <div class="col-12">
+
+
+        <div class="custom-control custom-radio custom-control-inline">
+          <input type="radio" id="language" name="town" class="custom-control-input" value="Cape Town">
+          <label class="custom-control-label" for="town">Cape Town</label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+          <input type="radio" id="customRadioInline2" name="town" class="custom-control-input" value="Bellville">
+          <label class="custom-control-label" for="customRadioInline2">Bellville</label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+          <input type="radio" id="customRadioInline" name="town" class="custom-control-input" value="Parrow">
+          <label class="custom-control-label" for="customRadioInline">Parrow</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div style="padding-left:30%;padding-top:2%" class="col-12">
+        <button type="submit" class="btn btn-outline-success">show</button>
+
+      </div>
+      <br>
+      <div style="padding-left:30%;padding-top:2%" class="col-12">
+        <button type="submit" class="btn btn-outline-success">reset</button>
+
+      </div>
+      <div class="row">
+        <div class="col-12">
+
+
+          <ul id="myList" style="list-style:none">
+            <div class="box"></div>
+            {{#each regnums}}
+            {{this.reg_numbers}}
+            {{/each}}
+          </ul>
+
+
+        </div>
+      </div>
+
+
+
+</body>
+</form>
+<script src="registration_number.js" charset="utf-8"></script>
+
+
+</html>
