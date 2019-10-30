@@ -10,7 +10,8 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "eslint": "^6.5.1"
+    "eslint": "^6.5.1",
+    "mocha": "^6.2.2"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
