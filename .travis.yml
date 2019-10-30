@@ -10,7 +10,7 @@ services:
 
 before_script:
   - psql -c 'create database  reg_numbers_tests;' -U postgres
-  - psql -U postgres -d reg_numbers_tests -a -f database.sql
+  - psql -U postgres -d reg_numbers_tests -a -f registrations.sql
 
 addons:
   apt:
