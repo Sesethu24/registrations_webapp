@@ -2,6 +2,7 @@ module.exports = function Registration(pool) {
 
     async function addToList(param) {
         let reg = param;
+        console.log(reg);
 
         let reg_numbers = await pool.query('SELECT * FROM my_reg_numbers WHERE reg_numbers = $1', [reg])
         if (reg_numbers.rows.length !== 0) {
