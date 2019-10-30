@@ -19,5 +19,16 @@
     "express-handlebars": "^3.1.0",
     "express-session": "^1.17.0",
     "pg": "^7.12.1"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sesethu24/registrations_webapp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Sesethu24/registrations_webapp/issues"
+  },
+  "homepage": "https://github.com/Sesethu24/registrations_webapp#readme"
 }
