@@ -24,6 +24,8 @@ module.exports = function Registration(pool) {
 
     async function getRegistrations() {
         var regs = await pool.query('SELECT * FROM my_reg_numbers')
+        console.log(regs.rows);
+        
         return regs.rows;
     }
 
