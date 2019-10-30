@@ -25,8 +25,13 @@ module.exports = function Registration(pool) {
     async function getRegistrations() {
         var regs = await pool.query('SELECT * FROM my_reg_numbers')
         console.log(regs.rows);
-        
+
         return regs.rows;
+    }
+
+    async function add_town(town, tag) {
+        let build_town = await pool.query('INSERT INTO towns (town, town_tag) VALUES ($1,$2)', [town, tag])
+        return build_town;
     }
 
     //     error = "";
@@ -64,6 +69,7 @@ module.exports = function Registration(pool) {
     return {
         addToList,
         getRegistrations,
+        add_town
         // theFilter,
         // getErrorMessages
 
