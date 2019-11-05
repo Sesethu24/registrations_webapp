@@ -20,7 +20,7 @@
             <h1 style="padding-left: 30%" class="center">Registration Numbers </h1>
 
             <div class="row">
-              <div style="padding-left: 20%;padding-top:2%" class="col-6">
+              <div style="padding-left: 30%;padding-top:2%" class="col-6">
                 <div class="input-group flex-nowrap">
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="addon-wrapping">@</span>
@@ -37,8 +37,8 @@
       </div>
     </div>
     <div class="row">
-      <div style="padding-left:30%;padding-top:2%" class="col-12">
-        <button type="submit" class="btn btn-outline-success">add</button>
+      <div style="padding-left:40%;padding-top:2%" class="col-12">
+        <button type="submit" class="btn btn-success">add</button>
 
       </div>
     </div>
@@ -47,13 +47,13 @@
     </div>
 
     <br>
-    <div style="padding-left:20%;padding-top:2%" class="row">
+    <div style="padding-left:30%;padding-top:1.5%" class="row">
       <div class="col-12">
 
 
         <div class="custom-control custom-radio custom-control-inline">
-          <input type="radio" id="language" name="town" class="custom-control-input" value="Cape Town">
-          <label class="custom-control-label" for="town">Cape Town</label>
+          <input type="radio" id="customRadioInline3" name="town" class="custom-control-input" value="Cape Town">
+          <label class="custom-control-label" for="customRadioInline3">Cape Town</label>
         </div>
         <div class="custom-control custom-radio custom-control-inline">
           <input type="radio" id="customRadioInline2" name="town" class="custom-control-input" value="Bellville">
@@ -67,29 +67,34 @@
     </div>
 
     <div class="row">
-      <div style="padding-left:30%;padding-top:2%" class="col-12">
-        <button type="submit" class="btn btn-outline-success">show</button>
+      <div style="padding-left:40%;padding-top:2%" class="col-12">
+        <button type="submit" class="btn btn-success">show</button>
 
       </div>
       <br>
-      <div style="padding-left:30%;padding-top:2%" class="col-12">
-        <button type="submit" class="btn btn-outline-success">reset</button>
-
+      </form>
+      <div style="padding-left:40%;padding-top:2%" class="col-6">
+        <form action="/reset" method="POST" onsubmit="return confirm('Are you sure you want to reset?')">
+          {{!-- <h4 class="alert-heading">{{message}}</h4> --}}
+          <button type="submit" class="btn btn-danger">reset</button>
+          <span class="sr-only">unread messages</span>
+          {{!-- <div id="message">{{messages.message}}</div> --}}
       </div>
-      <div class="row">
-        <div class="col-12">
+  
+
+  </div>
+  <div class="row">
+    <div class="col-12">
 
 
-          <ul id="myList" style="list-style:none">
-            <div class="box"></div>
-            {{#each regnums}}
-            {{this.reg_numbers}}
-            {{/each}}
-          </ul>
+
+      {{#each regnums}}
+      <li id="myList" style="list-style:none">{{this.reg_numbers}}</li>
+      {{/each}}
 
 
-        </div>
-      </div>
+    </div>
+  </div>
 
 
 
