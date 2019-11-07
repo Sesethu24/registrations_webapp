@@ -48,7 +48,7 @@
     </div>
  </form>
     <br>
-    <form action="/show" method="POST">
+    <form action="/" method="POST">
        <div style="padding-left:30%;padding-top:1.5%" class="row">
       <div class="col-12">
         <div class="custom-control custom-radio custom-control-inline">
@@ -90,7 +90,11 @@
 
 
       {{#each regnums}}
+      {{#if this.reg_numbers}}
       <li id="myList" style="list-style:none">{{this.reg_numbers}}</li>
+      {{else}}
+      <li id="myList" style="list-style:none">{{this}}</li>
+      {{/if}}
       {{/each}}
 
 

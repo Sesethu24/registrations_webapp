@@ -2,6 +2,8 @@ module.exports = function (regs) {
 
     async function index(req, res) {
         var list = await regs.getRegistrations()
+        console.log(list);
+        
         res.render("index", {
             regnums: list
         })
@@ -18,10 +20,11 @@ module.exports = function (regs) {
 
     async function filteredRegs(req, res) {
         let myregs = req.body.town;
-        await regs.theFilter(myregs)
-        console.log(await regs.theFilter(myregs));
+        let regnums = await regs.theFilter(myregs)
         
-        res.redirect('/')
+        
+        res.render('index', {regnums}
+        )
     }
 
     function checkForRegex() {

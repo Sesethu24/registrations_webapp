@@ -55,7 +55,7 @@ app.use(bodyParser.json())
 app.get('/', route.index)
 app.post('/reg_numbers', route.addRegNumbers)
 app.post('/reset', route.clearButton)
-app.post('/show', route.filteredRegs)
+app.post('/', route.filteredRegs)
 
 let PORT = process.env.PORT || 3012;
 
