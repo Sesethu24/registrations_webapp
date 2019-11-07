@@ -32,6 +32,7 @@ describe('The basic database web app', function () {
         let reg_numbers = await instanceForReg.getRegistrations();
         assert.equal(1, reg_numbers.length);
     });
+    
 
     after(function () {
         pool.end();

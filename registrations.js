@@ -20,7 +20,7 @@ module.exports = function Registration(pool) {
         }
 
     }
-        async function getRegistrations() {
+    async function getRegistrations() {
         var regs = await pool.query('SELECT * FROM my_reg_numbers')
         return regs.rows;
     }
@@ -31,25 +31,26 @@ module.exports = function Registration(pool) {
     }
 
     async function theFilter(town) {
-    
-     let myfilter = await pool.query('SELECT * FROM my_reg_numbers WHERE reg_numbers = $1', [town])
-     if(myfilter.rows.length !==0){
-     return myfilter.rows;
-    }
-   
-    //     regNumbers.forEach(element => {
-    //         if (element.startsWith(town)) {
-    //             myfilter.push(element)
-    //         }
-    //     });
 
-    //     return myfilter;
-    // }
-   }
-   async function resetData() {
-    let reset = await pool.query("DELETE FROM my_reg_numbers;")
-    return reset;
-}
+        
+        let filteredTowns = []
+        let regsFiltered = getRegistrations()
+
+        regsFiltered = await pool.query('SELECT my_reg_numbers.reg_numbers, towns.town_tag FROM my_reg_numbers INNER JOIN towns ON my_reg_numbers.towns_id = towns.id;')
+        regsFiltered = regsFiltered.rows
+       
+        for (let i = 0; i < regsFiltered.length; i++) {
+        
+            if (regsFiltered[i].town_tag === town) {
+                filteredTowns.push(regsFiltered[i].reg_numbers)
+            }
+      }
+        return filteredTowns;
+    }
+    async function resetData() {
+        let reset = await pool.query("DELETE FROM my_reg_numbers;")
+        return reset;
+    }
 
     return {
         addToList,
@@ -57,7 +58,7 @@ module.exports = function Registration(pool) {
         add_town,
         theFilter,
         resetData
-        
+
 
     }
 }

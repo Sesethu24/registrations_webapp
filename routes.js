@@ -9,16 +9,18 @@ module.exports = function (regs) {
     async function addRegNumbers(req, res) {
         let regnumber = req.body.plate;
         if (regnumber === "") {
-            req.flash("reg can't be blank, Please enter a reg number!")
-            //return false;
+            req.flash("message", "reg can't be blank, Please enter a reg number!")
             return res.redirect('/')
         }
         await regs.addToList(regnumber)
         res.redirect('/');
     }
-    async function filteredRegs() {
-        let myregs = req.body.plate;
+
+    async function filteredRegs(req, res) {
+        let myregs = req.body.town;
         await regs.theFilter(myregs)
+        console.log(await regs.theFilter(myregs));
+        
         res.redirect('/')
     }
 
@@ -31,7 +33,7 @@ module.exports = function (regs) {
         var newReg2 = regex.test(param)
 
         if (!newReg && !newReg2) {
-            req.flash("please check the registrations examples above for valid registration numbers!");
+            req.flash("message", "invalid registration number");
             return false;
         }
     }

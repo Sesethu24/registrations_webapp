@@ -18,7 +18,7 @@
         <div class="regNumbers ">
           <span>
             <h1 style="padding-left: 30%" class="center">Registration Numbers </h1>
-
+              <div style="padding-left:30% "id="message">{{messages.message}}</div>
             <div class="row">
               <div style="padding-left: 30%;padding-top:2%" class="col-6">
                 <div class="input-group flex-nowrap">
@@ -41,26 +41,26 @@
         <button type="submit" class="btn btn-success">add</button>
 
       </div>
+
     </div>
     <div class="error">
 
     </div>
-
+ </form>
     <br>
-    <div style="padding-left:30%;padding-top:1.5%" class="row">
+    <form action="/show" method="POST">
+       <div style="padding-left:30%;padding-top:1.5%" class="row">
       <div class="col-12">
-
-
         <div class="custom-control custom-radio custom-control-inline">
-          <input type="radio" id="customRadioInline3" name="town" class="custom-control-input" value="Cape Town">
+          <input type="radio" id="customRadioInline3" name="town" class="custom-control-input" value="CA">
           <label class="custom-control-label" for="customRadioInline3">Cape Town</label>
         </div>
         <div class="custom-control custom-radio custom-control-inline">
-          <input type="radio" id="customRadioInline2" name="town" class="custom-control-input" value="Bellville">
+          <input type="radio" id="customRadioInline2" name="town" class="custom-control-input" value="CY">
           <label class="custom-control-label" for="customRadioInline2">Bellville</label>
         </div>
         <div class="custom-control custom-radio custom-control-inline">
-          <input type="radio" id="customRadioInline" name="town" class="custom-control-input" value="Parrow">
+          <input type="radio" id="customRadioInline" name="town" class="custom-control-input" value="CJ">
           <label class="custom-control-label" for="customRadioInline">Parrow</label>
         </div>
       </div>
@@ -73,12 +73,13 @@
       </div>
       <br>
       </form>
+     
       <div style="padding-left:40%;padding-top:2%" class="col-6">
         <form action="/reset" method="POST" onsubmit="return confirm('Are you sure you want to reset?')">
           {{!-- <h4 class="alert-heading">{{message}}</h4> --}}
           <button type="submit" class="btn btn-danger">reset</button>
           <span class="sr-only">unread messages</span>
-          {{!-- <div id="message">{{messages.message}}</div> --}}
+         
       </div>
   
 

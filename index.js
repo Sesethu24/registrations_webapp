@@ -4,13 +4,11 @@ let bodyParser = require('body-parser');
 let Registrations = require('./registrations');
 let routes = require('./routes');
 
-
 const flash = require('express-flash');
 const session = require('express-session');
 
 const pg = require('pg');
 const Pool = pg.Pool;
-
 
 let useSSL = false;
 let local = process.env.LOCAL || false;
@@ -57,7 +55,7 @@ app.use(bodyParser.json())
 app.get('/', route.index)
 app.post('/reg_numbers', route.addRegNumbers)
 app.post('/reset', route.clearButton)
-app.get('/show', route.filteredRegs)
+app.post('/show', route.filteredRegs)
 
 let PORT = process.env.PORT || 3012;
 
