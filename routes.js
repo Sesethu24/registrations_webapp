@@ -2,7 +2,7 @@ module.exports = function (regs) {
 
     async function index(req, res) {
         var list = await regs.getRegistrations()
-        console.log(list);
+        
         
         res.render("index", {
             regnums: list
@@ -27,7 +27,7 @@ module.exports = function (regs) {
         )
     }
 
-    function checkForRegex() {
+    function checkForRegex(param) {
 
         var regex = /[A-Z]{2}\s[0-9]{6}/g;
         var newReg = regex.test(param)
@@ -37,7 +37,7 @@ module.exports = function (regs) {
 
         if (!newReg && !newReg2) {
             req.flash("message", "invalid registration number");
-            return false;
+            //return false;
         }
     }
     async function clearButton(req, res) {

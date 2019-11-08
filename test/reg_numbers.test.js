@@ -32,6 +32,30 @@ describe('The basic database web app', function () {
         let reg_numbers = await instanceForReg.getRegistrations();
         assert.equal(1, reg_numbers.length);
     });
+    it('should return registration numbers from Cape Town only', async function () {
+        let instanceForReg = Registrations(pool);
+        await instanceForReg.add_town('Cape town','CA')
+        await instanceForReg.addToList('CA 123 123');
+        await instanceForReg.addToList('CY 123 234');
+        let reg_numbers = await instanceForReg.theFilter('CA');
+        assert.equal('CA 123 123', reg_numbers);
+    });
+    it('should return registration numbers from Bellville only', async function () {
+        let instanceForReg = Registrations(pool);
+        await instanceForReg.add_town('Bellville','CY')
+        await instanceForReg.addToList('CA 123 123');
+        await instanceForReg.addToList('CY 123 234');
+        let reg_numbers = await instanceForReg.theFilter('CY');
+        assert.equal('CY 123 234', reg_numbers);
+    });
+    it('should return registration numbers from Parrow only', async function () {
+        let instanceForReg = Registrations(pool);
+        await instanceForReg.add_town('Parrow','CJ')
+        await instanceForReg.addToList('CJ 321 123');
+        await instanceForReg.addToList('CY 123 234');
+        let reg_numbers = await instanceForReg.theFilter('CJ');
+        assert.equal('CJ 321 123', reg_numbers);
+    });
     
 
     after(function () {
