@@ -32,9 +32,12 @@ module.exports = function Registration(pool) {
 
     async function theFilter(town) {
 
-        
+        let allRegs = town
         let filteredTowns = []
         let regsFiltered = getRegistrations()
+        if(allRegs === "all"){
+           return regsFiltered;
+        }
 
         regsFiltered = await pool.query('SELECT my_reg_numbers.reg_numbers, towns.town_tag FROM my_reg_numbers INNER JOIN towns ON my_reg_numbers.towns_id = towns.id;')
         regsFiltered = regsFiltered.rows
