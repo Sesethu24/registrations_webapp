@@ -56,8 +56,6 @@ describe('The basic database web app', function () {
         let reg_numbers = await instanceForReg.theFilter('CJ');
         assert.equal('CJ 321 123', reg_numbers);
     });
-    
-
     after(function () {
         pool.end();
     })
