@@ -10,8 +10,13 @@ module.exports = function (regs) {
     }
     async function addRegNumbers(req, res) {
         let regnumber = req.body.plate;
+        let myRegex = checkForRegex(regnumber)
         if (regnumber === "") {
             req.flash("message", "reg can't be blank, Please enter a reg number!")
+            return res.redirect('/')
+        }
+        if(myRegex){
+            req.flash("message", "invalid registration number");
             return res.redirect('/')
         }
         await regs.addToList(regnumber)
@@ -34,11 +39,8 @@ module.exports = function (regs) {
 
         var regex = /([A-Z]){2}\s+([0-9]){3}\s([0-9]){3}/g;
         var newReg2 = regex.test(param)
-
-        if (!newReg && !newReg2) {
-            req.flash("message", "invalid registration number");
-            //return false;
-        }
+        return !newReg && !newReg2
+        
     }
     async function clearButton(req, res) {
         await regs.resetData()

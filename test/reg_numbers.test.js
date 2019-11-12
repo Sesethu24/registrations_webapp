@@ -56,6 +56,33 @@ describe('The basic database web app', function () {
         let reg_numbers = await instanceForReg.theFilter('CJ');
         assert.equal('CJ 321 123', reg_numbers);
     });
+
+    describe("RegEx test", function () {
+        var regex = /[A-Z]{2}\s[0-9]{6}/g;
+        it("should return true ", function () {
+            var name = "CA 123456"
+            assert.equal(regex.test(name), true)
+    
+        })
+        
+         it("should check if the reg number matches the regex, meaning that it has at least 2 characters a space and 6 digits ", function ()  {
+            var regex = /[A-Z]{2}\s[0-9]{6}/g;
+            var name = "CA 123456"
+                assert.equal(regex.test(name), true)
+        
+            })
+        it("should return false", function () {
+            var name = ".."
+    
+            assert.equal(regex.test(name), false)
+        })
+        it("should return false if the reg numbers dont match the regex ", function () {
+            var name = "CA12345"
+    
+            assert.equal(regex.test(name), false)
+        })
+    })
+    
     after(function () {
         pool.end();
     })
