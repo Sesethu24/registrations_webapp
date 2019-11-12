@@ -9,7 +9,7 @@ body {
 li {
     width: 100px;
     border: 2px solid black;
-    border-radius: 2em;
+    border-radius: 0.4em;
     padding: 1px;
     margin: 1px;
     background-color: yellow;
