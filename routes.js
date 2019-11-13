@@ -19,9 +19,9 @@ module.exports = function (regs) {
             req.flash("message", "INVALID! a valid reg starts with CA, CY or CJ a space and numbers");
             return res.redirect('/')
         } 
-        else if (myRegex === false) {
-            req.flash("message", "INVALID town tag! a valid reg starts with CA, CY or CJ ");
-        }
+        // else if (myRegex === false) {
+        //     req.flash("message", "INVALID town tag! a valid reg starts with CA, CY or CJ ");
+        // }
         await regs.addToList(regnumber)
         res.redirect('/');
     }
