@@ -28,10 +28,12 @@ module.exports = function (regs) {
             req.flash("message", "INVALID! a valid reg starts with CA, CY or CJ a space and numbers");
             return res.redirect('/')
         }
-        if(regs.display_error()){
+
+        if (regs.display_error()) {
             req.flash('message', regs.display_error())
             return res.redirect('/')
         }
+
         res.redirect('/');
     }
 
@@ -58,6 +60,7 @@ module.exports = function (regs) {
     }
     async function clearButton(req, res) {
         await regs.resetData()
+        req.flash('message', regs.display_succs())
         res.redirect('/')
     }
 
