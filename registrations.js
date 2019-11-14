@@ -1,5 +1,5 @@
 module.exports = function Registration(pool) {
-
+    let errors = ''
     async function addToList(param) {
         let reg = param;
 
@@ -16,6 +16,8 @@ module.exports = function Registration(pool) {
             let tag = get_all_towns.rows[i].town_tag;
             if (param.startsWith(tag)) {
                 await pool.query('INSERT INTO my_reg_numbers (reg_numbers,towns_id) VALUES ($1,$2)', [reg, id])
+            } else {
+                errors = 'Sorry we dont track license plate for that town!'
             }
         }
 
@@ -35,19 +37,19 @@ module.exports = function Registration(pool) {
         let allRegs = town
         let filteredTowns = []
         let regsFiltered = getRegistrations()
-        if(allRegs === "all"){
-           return regsFiltered;
+        if (allRegs === "all") {
+            return regsFiltered;
         }
 
         regsFiltered = await pool.query('SELECT my_reg_numbers.reg_numbers, towns.town_tag FROM my_reg_numbers INNER JOIN towns ON my_reg_numbers.towns_id = towns.id;')
         regsFiltered = regsFiltered.rows
-       
+
         for (let i = 0; i < regsFiltered.length; i++) {
-        
+
             if (regsFiltered[i].town_tag === town) {
                 filteredTowns.push(regsFiltered[i].reg_numbers)
             }
-      }
+        }
         return filteredTowns;
     }
     async function resetData() {
@@ -55,12 +57,15 @@ module.exports = function Registration(pool) {
         return reset;
     }
 
+    const display_error = () => errors
+
     return {
         addToList,
         getRegistrations,
         add_town,
         theFilter,
-        resetData
+        resetData,
+        display_error
 
 
     }
