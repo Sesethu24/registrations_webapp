@@ -71,29 +71,18 @@
       </div>
     </div>
 
-    <div class="row">
-      <div style="padding-left:40%;padding-top:2%" class="col-12">
-        <button type="submit" class="btn btn-success">show</button>
-
-      </div>
-      <br>
+    <br>
   </form>
-
-  <div style="padding-left:40%;padding-top:2%" class="col-6">
-    <form action="/reset" method="POST" onsubmit="return confirm('Are you sure you want to reset?')">
-
+  <form action="/reset" method="POST" onsubmit="return confirm('Are you sure you want to reset?')">
+    <div style="padding-left: 35%;">
+      <button type="submit" class="btn btn-success">show</button>
       <button type="submit" class="btn btn-danger">reset</button>
-      <span class="sr-only">unread messages</span>
-
+    </div>
+  </form>
   </div>
 
-
-  </div>
-  <div style="padding-left:2%;" class="row">
+  <div style="padding-left:20%;padding-top:1.5%" class="row">
     <div class="col-12">
-
-
-
       {{#each regnums}}
       {{#if this.reg_numbers}}
       <li id="myList" style="list-style:none">{{this.reg_numbers}}</li>
@@ -101,15 +90,10 @@
       <li id="myList" style="list-style:none">{{this}}</li>
       {{/if}}
       {{/each}}
-
-
     </div>
   </div>
-
-
-
 </body>
-</form>
+
 <script src="registration_number.js" charset="utf-8"></script>
 
 
