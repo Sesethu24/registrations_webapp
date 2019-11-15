@@ -4,13 +4,11 @@ module.exports = function Registration(pool) {
     async function addToList(param) {
         errors = ''
         let reg = param;
-
         let reg_numbers = await pool.query('SELECT * FROM my_reg_numbers WHERE reg_numbers = $1', [reg])
         if (reg_numbers.rows.length !== 0) {
             errors = 'license plate already exists'
             return true;
         }
-
         let id;
         let get_all_towns = await pool.query('SELECT * FROM towns;');
         if (get_all_towns.rows.length !== 0) {
@@ -24,18 +22,14 @@ module.exports = function Registration(pool) {
         }
         errors = 'Sorry we dont track license plate for that town!'
     }
-
-
     async function getRegistrations() {
         var regs = await pool.query('SELECT * FROM my_reg_numbers')
         return regs.rows;
     }
-
     async function add_town(town, tag) {
         let build_town = await pool.query('INSERT INTO towns (town, town_tag) VALUES ($1,$2)', [town, tag])
         return build_town;
     }
-
     async function theFilter(town) {
 
         let allRegs = town
@@ -61,7 +55,6 @@ module.exports = function Registration(pool) {
         succs_message = 'Successfully reseted the database!'
         return reset;
     }
-
     const display_error = () => errors
     const display_succs = () => succs_message
 
